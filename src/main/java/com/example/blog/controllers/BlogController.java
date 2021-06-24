@@ -68,8 +68,8 @@ public class BlogController{
                                  @RequestParam String anons, String full_text, Model model){
         Post post = postRepository.findById(id).orElseThrow(IllegalStateException::new);
         post.setTitle(title);
-        post.setTitle(anons);
-        post.setTitle(full_text);
+        post.setAnons(anons);
+        post.setFull_text(full_text);
         postRepository.save(post);
         return "redirect:/blog";
     }

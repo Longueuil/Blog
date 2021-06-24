@@ -15,7 +15,7 @@
     <p><b>Views </b><span th:text="${element.views}"/></p>
     <a th:href="'/blog/' + ${element.id} + '/edit'" class="btn btn-warning">Edit</a>
     <form th:action="'/blog/' + ${element.id} + '/remove'" method="post">
-      <button class="btn btn-warning" type="submit">Delete</button>
+      <br><button class="btn btn-warning" type="submit">Delete</button>
     </form>
   </div>
 </div>
