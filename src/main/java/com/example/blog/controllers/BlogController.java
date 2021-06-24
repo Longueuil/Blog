@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
 @Controller
 public class BlogController{
 
@@ -33,4 +36,14 @@ public class BlogController{
         postRepository.save(post);
         return "redirect:/blog";
     }
+    // will receive dynamic parameter
+    @GetMapping("/blog/{id}")
+    public String blogDetails(@RequestParam(value = "id") long id, Model model){
+       Optional<Post> post =  postRepository.findById(id);
+        ArrayList<Post> res = new ArrayList<>();
+        post.ifPresent(res :: add);
+        model.addAttribute("post", res);
+        return "blog-details";
+    }
+
 }
